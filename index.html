@@ -1,331 +1,847 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeNeuron — LLM-Powered Backend Systems</title>
+    <title>Ellmetrix — Enterprise AI Development & Custom Business Software</title>
+    
+    <!-- Meta & SEO Baseline -->
+    <meta name="description" content="Ellmetrix builds AI-powered software, custom CRMs, WhatsApp automation, and RAG knowledge bases that save businesses time, reduce operating costs, and scale operations.">
+    <meta name="keywords" content="AI Development Company, Software Development Company, AI Automation Services, AI Chatbot Development, Business Automation, WhatsApp Automation, Flask Development, FastAPI Development, Python Development, React Development, Custom Software Development, Enterprise AI Solutions, Healthcare AI, RAG Development, AI Consulting">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ellmetrix.com">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ellmetrix.com/">
+    <meta property="og:title" content="Ellmetrix — Enterprise AI Development & Custom Business Software">
+    <meta property="og:description" content="Build AI-powered software, WhatsApp automation systems, custom CRMs, and enterprise RAG platforms with zero fluff and sub-2s response latency.">
+    <meta property="og:image" content="https://ellmetrix.com/og-image.jpg">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ellmetrix.com/">
+    <meta name="twitter:title" content="Ellmetrix — Enterprise AI Development & Custom Business Software">
+    <meta name="twitter:description" content="AI-first backend engineering, custom CRMs, and WhatsApp business automation built for high-growth businesses.">
+    <meta name="twitter:image" content="https://ellmetrix.com/twitter-image.jpg">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            accent: '#8b5cf6'
+                        },
+                        darkbg: '#07080e',
+                        surface: '#11131f',
+                        surfaceBorder: 'rgba(255,255,255,0.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-        h1, h2, h3, .font-space { font-family: 'Space Grotesk', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #07080e; color: #f4f4f6; }
+        h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
     </style>
+
+    <!-- Structured Data / JSON-LD Schemas -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ellmetrix.com/#organization",
+          "name": "Ellmetrix",
+          "url": "https://ellmetrix.com",
+          "logo": "https://ellmetrix.com/logo.png",
+          "description": "Enterprise AI development and custom software engineering agency.",
+          "sameAs": [
+            "https://github.com/ellmetrix"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ellmetrix.com/#website",
+          "url": "https://ellmetrix.com",
+          "name": "Ellmetrix",
+          "publisher": { "@id": "https://ellmetrix.com/#organization" }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://ellmetrix.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How long does a typical custom AI or software project take?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most custom implementations range between 2 to 8 weeks depending on the technical scope, integrations, and testing requirements."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do you handle ongoing maintenance and support?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We offer structured monthly retainers ($150–$300/mo for simple systems, custom for enterprise) covering server infrastructure, API updates, bug fixes, and performance tuning."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you integrate AI into our existing legacy systems?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, we specialize in building secure REST APIs and middleware in Python (Flask/FastAPI) that seamlessly bridge modern LLM architectures with existing databases and legacy software."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
-<body class="bg-[#0A0A0F] text-[#F4F4F6] antialiased selection:bg-violet-500/30 selection:text-white relative min-h-screen">
+<body class="antialiased selection:bg-brand-500/30 selection:text-white bg-grid relative">
 
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-[20%] right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- Promotional / Announcement Bar -->
+    <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-accent text-white py-2 px-4 text-center text-xs sm:text-sm font-medium sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+            <span class="bg-white/20 px-2 py-0.5 rounded text-[11px] font-mono uppercase tracking-wider font-bold">🚀 August Special</span>
+            <span>Get <strong>20% OFF</strong> all custom software projects + <strong>FREE</strong> architecture consultation &amp; deployment of your first feature.</span>
+            <a href="#contact" class="underline hover:text-brand-100 font-semibold ml-1">Claim Offer &rarr;</a>
+        </div>
+    </div>
 
-    <nav class="sticky top-0 z-50 border-b border-white/[0.08] bg-[#0A0A0F]/80 backdrop-blur-md px-6 py-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <span class="font-mono text-sm font-bold text-white">CN</span>
+    <!-- Navigation Header -->
+    <header class="sticky top-[33px] z-40 border-b border-white/[0.08] bg-[#07080e]/85 backdrop-blur-md px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-accent flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    <span class="font-mono text-base font-bold text-white">E</span>
                 </div>
-                <span class="text-xl font-bold tracking-tight font-mono">Code<span class="bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] bg-clip-text text-transparent">Neuron</span></span>
-            </div>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[#9CA3AF]">
-                <a href="#services" class="hover:text-[#F4F4F6] transition-colors">Services</a>
-                <a href="#capabilities" class="hover:text-[#F4F4F6] transition-colors">Capabilities</a>
-                <a href="#proof" class="hover:text-[#F4F4F6] transition-colors">Case Studies</a>
-                <a href="#why-us" class="hover:text-[#F4F4F6] transition-colors">The Difference</a>
-                <a href="#about" class="hover:text-[#F4F4F6] transition-colors">Team</a>
-            </div>
-            <a href="#contact" class="px-4 py-2 text-sm font-semibold rounded-lg border border-white/[0.08] hover:bg-white/[0.04] transition-all bg-[#12131C]">
-                Book a Call
+                <span class="text-xl font-bold tracking-tight font-display text-white">Ell<span class="bg-gradient-to-r from-brand-500 to-brand-accent bg-clip-text text-transparent">metrix</span></span>
             </a>
-        </div>
-    </nav>
 
-    <section class="relative pt-24 pb-20 px-6 max-w-6xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#3B82F6]/30 bg-[#3B82F6]/5 text-xs font-mono text-[#3B82F6] mb-6">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#4ADE80] animate-pulse"></span>
-            Production-Ready AI Backends
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#industries" class="hover:text-white transition-colors">Industries</a>
+                <a href="#proof" class="hover:text-white transition-colors">Case Studies</a>
+                <a href="#vsl" class="hover:text-white transition-colors">How We Work</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold rounded-lg bg-surface border border-white/10 hover:bg-white/[0.06] transition-all text-white">
+                    Book Strategy Call
+                </a>
+                <a href="#contact" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-brand-600 to-brand-accent text-white shadow-lg shadow-brand-500/20 hover:opacity-95 transition-all">
+                    Get Proposal
+                </a>
+            </div>
         </div>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.15] mb-6">
-            We connect your product to AI that <span class="bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] bg-clip-text text-transparent">actually understands</span> your business
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 px-6 max-w-7xl mx-auto text-center overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-500/15 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-xs font-mono text-brand-500 mb-8">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Enterprise AI Development &amp; Custom Automation
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight max-w-5xl mx-auto leading-[1.1] mb-6 font-display">
+            Building AI-Powered Software That <span class="bg-gradient-to-r from-brand-500 via-blue-400 to-brand-accent bg-clip-text text-transparent">Saves Time, Reduces Costs</span>, and Scales Operations.
         </h1>
-        <p class="text-lg md:text-xl text-[#9CA3AF] max-w-2xl mx-auto mb-10 font-normal">
-            Backend systems, LLM integration, and secure full-stack platforms — built by a senior engineering team that ships production AI, not fragile prototypes.
+
+        <p class="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-10 font-normal leading-relaxed">
+            We engineer production-grade custom software, WhatsApp business automation, RAG knowledge bases, and AI workflows engineered for clinics, contractors, logistics, and scaling enterprise teams.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white font-semibold rounded-xl shadow-lg shadow-blue-500/20 hover:opacity-95 transition-all text-center">
-                Book a Free Call
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
+            <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold rounded-xl shadow-xl shadow-brand-500/25 hover:opacity-95 transition-all text-center text-base">
+                Book Free Consultation
             </a>
-            <a href="#proof" class="w-full sm:w-auto px-8 py-4 bg-[#12131C] text-[#F4F4F6] font-semibold rounded-xl border border-white/[0.08] hover:bg-white/[0.04] transition-all text-center inline-flex items-center justify-center gap-2">
-                See Proof: UniBot Demo
+            <a href="#proof" class="w-full sm:w-auto px-8 py-4 bg-surface text-gray-200 font-semibold rounded-xl border border-white/10 hover:bg-white/[0.04] transition-all text-center text-base inline-flex items-center justify-center gap-2">
+                View Our Work <span>&rarr;</span>
             </a>
         </div>
-        <div class="pt-6 border-t border-white/[0.04] max-w-3xl mx-auto flex flex-wrap gap-y-2 gap-x-6 justify-center text-xs font-mono text-[#9CA3AF]">
-            <span class="flex items-center gap-1.5">✓ Sub-2s latency under load</span>
-            <span class="text-white/20">•</span>
-            <span class="flex items-center gap-1.5">✓ Prompt-constrained (no hallucination)</span>
-            <span class="text-white/20">•</span>
-            <span class="flex items-center gap-1.5">✓ Production-grade Python backends</span>
+
+        <div class="pt-8 border-t border-white/[0.06] max-w-4xl mx-auto flex flex-wrap gap-y-3 gap-x-8 justify-center text-xs font-mono text-gray-400">
+            <span class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Sub-2s Latency Standard</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Grounded Data (Zero Hallucination Guardrails)</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Direct Senior Engineer Access</span>
         </div>
     </section>
 
-    <section class="border-y border-white/[0.06] bg-[#12131C]/30 py-6 px-6 overflow-hidden">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-4 justify-between">
-            <span class="text-xs font-mono uppercase tracking-wider text-[#9CA3AF]">Built and shipped live:</span>
-            <div class="flex flex-wrap gap-x-6 gap-y-3 justify-center text-sm font-medium text-[#F4F4F6]/80">
-                <a href="#proof" class="hover:text-[#3B82F6] transition-colors">UniBot ↗</a>
-                <span class="text-white/10">|</span>
-                <a href="#proof" class="hover:text-[#3B82F6] transition-colors">PhysicsVerse ↗</a>
-                <span class="text-white/10">|</span>
-                <a href="#proof" class="hover:text-[#3B82F6] transition-colors">DSA Tutor App ↗</a>
-                <span class="text-white/10">|</span>
-                <a href="#proof" class="hover:text-[#22D3EE] transition-colors">Leukemia Detection System ↗</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="text-center md:text-left mb-16">
-            <h2 class="text-3xl font-bold tracking-tight mb-4">Focused Verticals & Specializations</h2>
-            <p class="text-[#9CA3AF] max-w-xl">We deploy expert AI/backend architecture tailored explicitly to three high-stakes environments.</p>
-        </div>
-
-        <div class="hidden lg:block border border-white/[0.08] rounded-xl overflow-hidden bg-[#12131C]/40 backdrop-blur-sm">
-            <div class="grid grid-cols-4 bg-[#12131C] border-b border-white/[0.08] p-4 text-xs font-mono uppercase tracking-wider text-[#9CA3AF]">
-                <div>Service</div>
-                <div>Who it's for</div>
-                <div>Starts From</div>
-                <div>How it works</div>
-            </div>
-            
-            <div class="grid grid-cols-4 p-6 border-b border-white/[0.06] hover:bg-white/[0.02] transition-colors align-top">
-                <div>
-                    <h3 class="font-bold text-[#F4F4F6] mb-1">B2B SaaS AI Integration</h3>
-                    <p class="text-xs text-[#9CA3AF] pr-4">LLM chatbots, RAG pipelines, document summarizers, and AI copy-generation connected to your data.</p>
-                </div>
-                <div class="text-sm text-[#9CA3AF] self-center">SaaS companies adding smart automation without hiring an expensive inside ML team.</div>
-                <div class="font-mono text-sm font-semibold self-center text-[#4ADE80]">$4,500</div>
-                <div class="text-xs text-[#9CA3AF] space-y-1">
-                    <p>• Discovery & use case design</p>
-                    <p>• RAG integration with docs/DB</p>
-                    <p>• Flask/FastAPI endpoint build</p>
-                    <p>• Rigorous load testing & deployment</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-4 p-6 border-b border-white/[0.06] hover:bg-white/[0.02] transition-colors align-top">
-                <div>
-                    <h3 class="font-bold text-[#F4F4F6] mb-1">EdTech & Smart Learning</h3>
-                    <p class="text-xs text-[#9CA3AF] pr-4">Secure student/teacher portals, RBAC + JWT auth, dashboards, algorithm visualizers, and quiz engines.</p>
-                </div>
-                <div class="text-sm text-[#9CA3AF] self-center">Learning platforms needing robust AI tutoring features or engagement engines.</div>
-                <div class="font-mono text-sm font-semibold self-center text-[#4ADE80]">$6,000</div>
-                <div class="text-xs text-[#9CA3AF] space-y-1">
-                    <p>• Architecture + user role mapping</p>
-                    <p>• RBAC/JWT secure API build</p>
-                    <p>• MongoDB / REST backend execution</p>
-                    <p>• OWASP structural hardening</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-4 p-6 hover:bg-white/[0.02] transition-colors align-top">
-                <div>
-                    <h3 class="font-bold text-[#F4F4F6] mb-1">Healthcare AI Assistants</h3>
-                    <p class="text-xs text-[#9CA3AF] pr-4">Patient intake bots, secure data storage, scheduled reminders — precise demo-stage prototypes.</p>
-                </div>
-                <div class="text-sm text-[#9CA3AF] self-center">Clinics or health-tech startups validating intelligent data intake & workflows.</div>
-                <div class="font-mono text-sm font-semibold self-center text-[#4ADE80]">$5,000</div>
-                <div class="text-xs text-[#9CA3AF] space-y-1 text-orange-200/80">
-                    <p>• Contextual intake bot design</p>
-                    <p>• Secure structured data storage</p>
-                    <p>• Automated tracking workflows</p>
-                    <p class="text-[10px] text-orange-400 font-mono mt-1">⚠️ Demo-stage prototype</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="lg:hidden space-y-6">
-            <div class="p-6 border border-white/[0.08] rounded-xl bg-[#12131C]/60">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg">B2B SaaS AI Integration</h3>
-                    <span class="font-mono text-sm text-[#4ADE80]">$4,500</span>
-                </div>
-                <p class="text-sm text-[#F4F4F6] mb-2">LLM chatbots, RAG pipelines, and document pipelines connected straight to your system.</p>
-            </div>
-            <div class="p-6 border border-white/[0.08] rounded-xl bg-[#12131C]/60">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg">EdTech & Smart Learning</h3>
-                    <span class="font-mono text-sm text-[#4ADE80]">$6,000</span>
-                </div>
-                <p class="text-sm text-[#F4F4F6] mb-2">Secure portals, RBAC + JWT auth architectures, and algorithm tracking engines.</p>
-            </div>
-            <div class="p-6 border border-white/[0.08] rounded-xl bg-[#12131C]/60">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg">Healthcare AI Assistants</h3>
-                    <span class="font-mono text-sm text-[#4ADE80]">$5,000</span>
-                </div>
-                <p class="text-sm text-[#F4F4F6] mb-2">Patient intake bots and secure scheduled reminder mechanics built strictly to demo scope.</p>
+    <!-- Technology Stack / Trust Section -->
+    <section class="border-y border-white/[0.08] bg-surface/40 py-10 px-6">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-center text-xs font-mono uppercase tracking-widest text-gray-400 mb-8">
+                Built With Enterprise-Grade Stack &amp; Infrastructure
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 text-sm font-semibold font-mono text-gray-300">
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">Python</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">FastAPI</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">Flask</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">React</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">Next.js</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">Node.js</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">MongoDB</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">PostgreSQL</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">Docker</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">TensorFlow</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">OpenCV</span>
+                <span class="px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">Groq</span>
             </div>
         </div>
     </section>
 
-    <section id="capabilities" class="py-20 px-6 border-t border-white/[0.04] bg-[#12131C]/20">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <!-- Target Industries -->
+    <section id="industries" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4 font-display">Targeted Solutions Built for Your Industry</h2>
+            <p class="text-gray-400">We replace generic manual labor with automated systems designed specifically around industry compliance and workflows.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 text-center text-xs font-medium text-gray-300">
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Healthcare Clinics</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Hospitals &amp; Dental</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Construction &amp; HVAC</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Plumbing &amp; Roofing</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Real Estate Agencies</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Law &amp; Insurance Firms</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Educational Institutions</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Restaurants &amp; Hospitality</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">E-Commerce Brands</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Manufacturing</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">Logistics Companies</div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06] hover:border-brand-500/50 transition-colors">SMEs &amp; Startups</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
             <div>
-                <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-6">What CodeNeuron Can Build</h2>
-                <ul class="space-y-4 text-[#9CA3AF] text-sm">
-                    <li class="flex items-start gap-3"><span>⚡</span> LLM-backed chatbots and support assistants grounded in your own data (RAG)</li>
-                    <li class="flex items-start gap-3"><span>⚡</span> Backend APIs (Flask/FastAPI) with prompt engineering and hallucination guardrails</li>
-                    <li class="flex items-start gap-3"><span>⚡</span> Secure role-based portals (RBAC, JWT, OWASP-hardened) for EdTech and healthcare</li>
-                    <li class="flex items-start gap-3"><span>⚡</span> Patient intake and scheduling automation with structured data capture</li>
-                    <li class="flex items-start gap-3"><span>⚡</span> Progress dashboards, quiz engines, and algorithm visualizers for learning platforms</li>
-                    <li class="flex items-start gap-3"><span>⚡</span> Document summarization and AI copy-generation pipelines for SaaS products</li>
-                </ul>
+                <span class="text-xs font-mono text-brand-500 uppercase tracking-widest">Client-Focused Offerings</span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 font-display">Core Business Solutions</h2>
             </div>
-            <div class="border border-white/[0.08] rounded-xl p-6 bg-[#0A0A0F] font-mono text-xs text-[#9CA3AF] shadow-inner">
-                <div class="border-b border-white/[0.08] pb-3 mb-4 text-white">⚙️ architectural-blueprint.json</div>
-                <p class="text-emerald-400">// Systematic intake framework</p>
-                <p class="mt-2"><span class="text-purple-400">1. Discovery Call:</span> Isolate architecture parameters.</p>
-                <p class="mt-1"><span class="text-purple-400">2. Scope Separation:</span> Split launch-critical logic from bloat.</p>
-                <p class="mt-1"><span class="text-purple-400">3. Functional Prototyping:</span> Ship raw APIs to validate base connections.</p>
-                <p class="mt-1"><span class="text-purple-400">4. RAG Integration:</span> Feed custom documents securely with vectors.</p>
-                <p class="mt-1"><span class="text-purple-400">5. Hardening:</span> Latency and load security validation before rollout.</p>
-            </div>
+            <p class="text-gray-400 max-w-md text-sm">Every service is backed by transparent starting prices, direct ROI metrics, and dedicated deployment timelines.</p>
         </div>
-    </section>
 
-    <section id="proof" class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold tracking-tight mb-4">Proof of Work</h2>
-            <p class="text-[#9CA3AF]">Real live applications, production execution parameters, and metrics.</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="border border-white/[0.08] bg-[#12131C]/40 rounded-2xl p-6 flex flex-col justify-between">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Service 1 -->
+            <div class="bg-surface rounded-2xl border border-white/[0.08] p-6 flex flex-col justify-between hover:border-brand-500/40 transition-all">
                 <div>
-                    <span class="text-[10px] font-mono bg-blue-500/10 text-[#3B82F6] px-2 py-0.5 rounded border border-blue-500/20">B2B SaaS</span>
-                    <h3 class="text-xl font-bold my-2">UniBot</h3>
-                    <p class="text-sm text-[#9CA3AF]">Groq-powered inference layer displaying multi-layer prompt constraints and exceptional sub-2s latency under major concurrent user load patterns.</p>
-                </div>
-                <div class="flex gap-4 border-t border-white/[0.06] pt-4 text-xs font-mono mt-6 text-[#9CA3AF]">
-                    <span>Groq</span> <span>Python Backend</span> <span>LLM Guardrails</span>
-                </div>
-            </div>
-
-            <div class="border border-white/[0.08] bg-[#12131C]/40 rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] font-mono bg-purple-500/10 text-[#8B5CF6] px-2 py-0.5 rounded border border-purple-500/20">EdTech</span>
-                    <h3 class="text-xl font-bold my-2">PhysicsVerse</h3>
-                    <p class="text-sm text-[#9CA3AF]">A complete solo build featuring granular RBAC systems, strict stateful JWT token validation, and rigorous alignment with modern OWASP top-10 structural security protocols.</p>
-                </div>
-                <div class="flex gap-4 border-t border-white/[0.06] pt-4 text-xs font-mono mt-6 text-[#9CA3AF]">
-                    <span>JWT Auth</span> <span>MongoDB</span> <span>REST API</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="why-us" class="py-20 px-6 border-t border-white/[0.04]">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold tracking-tight mb-4">The CodeNeuron Difference</h2>
-                <p class="text-[#9CA3AF]">We operate with technical accuracy, plain scoping, and transparent milestones.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="p-6 border border-white/[0.06] bg-[#12131C]/40 rounded-xl">
-                    <h4 class="font-bold text-base mb-2">AI-First, Not AI-Added</h4>
-                    <p class="text-xs text-[#9CA3AF]">System layouts are engineered from day one with deep LLM connectivity and vector processing as the core baseline framework.</p>
-                </div>
-                <div class="p-6 border border-white/[0.06] bg-[#12131C]/40 rounded-xl">
-                    <h4 class="font-bold text-base mb-2">Grounded Data Systems</h4>
-                    <p class="text-xs text-[#9CA3AF]">Through engineered RAG patterns and prompt execution constraints, we guarantee responses match your exact dataset parameters.</p>
-                </div>
-                <div class="p-6 border border-white/[0.06] bg-[#12131C]/40 rounded-xl">
-                    <h4 class="font-bold text-base mb-2">Direct Technical Access</h4>
-                    <p class="text-xs text-[#9CA3AF]">You maintain open lines of communication exclusively with senior engineers managing your codebase. No layers of account managers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="text-3xl md:text-4xl font-bold font-mono text-[#3B82F6] mb-1">&lt; 2.0s</div>
-                <div class="text-xs font-mono text-[#9CA3AF] uppercase tracking-wider">Latency Target</div>
-            </div>
-            <div>
-                <div class="text-3xl md:text-4xl font-bold font-mono text-[#8B5CF6] mb-1">3</div>
-                <div class="text-xs font-mono text-[#9CA3AF] uppercase tracking-wider">Specialized Verticals</div>
-            </div>
-            <div>
-                <div class="text-3xl md:text-4xl font-bold font-mono text-[#22D3EE] mb-1">6-Wk</div>
-                <div class="text-xs font-mono text-[#9CA3AF] uppercase tracking-wider">Build Benchmark</div>
-            </div>
-            <div>
-                <div class="text-3xl md:text-4xl font-bold font-mono text-[#4ADE80] mb-1">Direct</div>
-                <div class="text-xs font-mono text-[#9CA3AF] uppercase tracking-wider">Senior Access</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-20 px-6 border-t border-white/[0.04] bg-[#12131C]/20">
-        <div class="max-w-4xl mx-auto">
-            <div class="p-6 md:p-8 border border-white/[0.08] bg-[#0A0A0F] rounded-2xl flex flex-col md:flex-row gap-8 items-center">
-                <div class="w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#3B82F6] via-[#8B5CF6] to-[#22D3EE] flex items-center justify-center font-mono text-2xl font-bold text-white shadow-xl shrink-0">
-                    IE
-                </div>
-                <div>
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
-                        <h3 class="text-xl font-bold text-[#F4F4F6]">Isha Eman</h3>
-                        <span class="text-xs font-mono text-[#8B5CF6] bg-[#8B5CF6]/10 px-2 py-0.5 rounded border border-[#8B5CF6]/20">Lead Python Backend & AI Developer</span>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl">🤖</span>
+                        <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">From $2,000</span>
                     </div>
-                    <p class="text-sm text-[#9CA3AF] leading-relaxed mb-4">
-                        Combining extensive experience as a Computer Science Lecturer with production engineering skills. Isha brings a unique dual perspective—structuring bulletproof code architecture for B2B frameworks while designing pedagogical logic for complex EdTech environments.
-                    </p>
+                    <h3 class="text-xl font-bold mb-2">1. AI Customer Support &amp; Chatbots</h3>
+                    <p class="text-xs text-gray-400 mb-4"><strong>Business Problem:</strong> Support teams overwhelmed by repetitive client inquiries leading to delayed responses and lost deals.</p>
+                    <p class="text-sm text-gray-300 mb-4"><strong>Solution:</strong> Custom conversational bots grounded with prompt constraints and live CRM sync for instant response resolution.</p>
+                    <div class="text-xs font-mono text-gray-400 space-y-1 bg-black/30 p-3 rounded-lg mb-4">
+                        <div>• Deliverables: Custom Bot, Analytics Panel, CRM Hook</div>
+                        <div>• Timeline: 2–4 Weeks</div>
+                        <div>• Tech: Python, Flask/FastAPI, Groq, REST APIs</div>
+                    </div>
                 </div>
+                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-surface rounded-2xl border border-white/[0.08] p-6 flex flex-col justify-between hover:border-brand-500/40 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl">💬</span>
+                        <div>
+                            <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">From $1,500</span>
+                            <span class="block text-[10px] font-mono text-gray-400 text-right mt-1">Maint: $150–$300/mo</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">2. WhatsApp Business Automation</h3>
+                    <p class="text-xs text-gray-400 mb-4"><strong>Business Problem:</strong> Manual communication backlogs on mobile apps leading to untracked client leads.</p>
+                    <p class="text-sm text-gray-300 mb-4"><strong>Solution:</strong> Automated messaging engine with customer CRM history, broadcast capability, and web session management.</p>
+                    <div class="text-xs font-mono text-gray-400 space-y-1 bg-black/30 p-3 rounded-lg mb-4">
+                        <div>• Deliverables: Admin Portal, Live Chat, Session Engine</div>
+                        <div>• Timeline: 2–3 Weeks</div>
+                        <div>• Tech: Python, Node.js, WhatsApp Web.js, JWT</div>
+                    </div>
+                </div>
+                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-surface rounded-2xl border border-white/[0.08] p-6 flex flex-col justify-between hover:border-brand-500/40 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl">📊</span>
+                        <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">From $3,000</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">3. Custom Business CRM &amp; Software</h3>
+                    <p class="text-xs text-gray-400 mb-4"><strong>Business Problem:</strong> Clunky, off-the-shelf SaaS applications charging exorbitant per-user seats with rigid features.</p>
+                    <p class="text-sm text-gray-300 mb-4"><strong>Solution:</strong> Tailor-built management dashboards with role-based access control (RBAC), auditing, and precise workflow hooks.</p>
+                    <div class="text-xs font-mono text-gray-400 space-y-1 bg-black/30 p-3 rounded-lg mb-4">
+                        <div>• Deliverables: Web App, Role Matrix, Database Schema</div>
+                        <div>• Timeline: 4–8 Weeks</div>
+                        <div>• Tech: React, Node.js, MongoDB/PostgreSQL, OWASP</div>
+                    </div>
+                </div>
+                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="bg-surface rounded-2xl border border-white/[0.08] p-6 flex flex-col justify-between hover:border-brand-500/40 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl">🧠</span>
+                        <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">From $3,500</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">4. AI Knowledge Base (RAG Systems)</h3>
+                    <p class="text-xs text-gray-400 mb-4"><strong>Business Problem:</strong> Internal staff spending hours searching scattered PDFs, manuals, and internal documents.</p>
+                    <p class="text-sm text-gray-300 mb-4"><strong>Solution:</strong> Vectorized document semantic search that answers precise operational questions instantly from your data.</p>
+                    <div class="text-xs font-mono text-gray-400 space-y-1 bg-black/30 p-3 rounded-lg mb-4">
+                        <div>• Deliverables: Vector Index, Query UI, Ingestion Pipeline</div>
+                        <div>• Timeline: 4–6 Weeks</div>
+                        <div>• Tech: Python, Vector DB, RAG Pipelines, FastAPI</div>
+                    </div>
+                </div>
+                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="bg-surface rounded-2xl border border-white/[0.08] p-6 flex flex-col justify-between hover:border-brand-500/40 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl">🩺</span>
+                        <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">From $3,000</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">5. Healthcare AI Solutions</h3>
+                    <p class="text-xs text-gray-400 mb-4"><strong>Business Problem:</strong> Patient intake bottlenecks, manual scheduling overhead, and unorganized patient data entry.</p>
+                    <p class="text-sm text-gray-300 mb-4"><strong>Solution:</strong> Secure intake bots, automated tracking workflows, and diagnostic triage assistance systems built for clinics.</p>
+                    <div class="text-xs font-mono text-gray-400 space-y-1 bg-black/30 p-3 rounded-lg mb-4">
+                        <div>• Deliverables: Intake Portal, Triage Bot, HIPAA Readiness</div>
+                        <div>• Timeline: 4–8 Weeks</div>
+                        <div>• Tech: Python, Flask, DenseNet121, Secure DB</div>
+                    </div>
+                </div>
+                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="bg-surface rounded-2xl border border-white/[0.08] p-6 flex flex-col justify-between hover:border-brand-500/40 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl">👁️</span>
+                        <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">From $3,000</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">6. Computer Vision &amp; AI Systems</h3>
+                    <p class="text-xs text-gray-400 mb-4"><strong>Business Problem:</strong> Manual attendance verification, visual safety monitoring, or physical document classification.</p>
+                    <p class="text-sm text-gray-300 mb-4"><strong>Solution:</strong> Real-time automated facial recognition, object detection, and visual verification engines.</p>
+                    <div class="text-xs font-mono text-gray-400 space-y-1 bg-black/30 p-3 rounded-lg mb-4">
+                        <div>• Deliverables: Camera Feed API, Recognition Model, Dashboard</div>
+                        <div>• Timeline: 4–6 Weeks</div>
+                        <div>• Tech: OpenCV, React, Node.js, MongoDB, JWT</div>
+                    </div>
+                </div>
+                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Case Studies / Proof of Work -->
+    <section id="proof" class="py-20 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-mono text-brand-500 uppercase tracking-widest">Enterprise Proof of Work</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 font-display">Featured Technical Case Studies</h2>
+            <p class="text-gray-400 mt-2 text-sm">Real implementations, live architectures, and verified tech stacks shipped by our team.</p>
+        </div>
+
+        <div class="space-y-12">
+
+            <!-- Flagship Project: WhatsApp Automation System -->
+            <div class="bg-surface rounded-2xl border border-white/[0.08] p-6 lg:p-8 grid lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">Status: Production Complete</span>
+                        <span class="text-xs font-mono text-gray-400">Enterprise Messaging Engine</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold">WhatsApp Business Automation Platform</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong>Client Problem:</strong> The client required a centralized system to handle high-volume WhatsApp business communication without relying on fragmented mobile hardware or expensive third-party wrappers.
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong>Solution Built:</strong> Ellmetrix engineered a full-stack automated messaging platform featuring a secure multi-tenant dashboard, real-time message broadcasting, customer session management, and chat history retention.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-3 pt-2 text-xs font-mono text-gray-300">
+                        <div class="p-2.5 rounded bg-black/40 border border-white/5">✓ Secure Business Dashboard &amp; CRM</div>
+                        <div class="p-2.5 rounded bg-black/40 border border-white/5">✓ Broadcast &amp; Scheduled Messaging</div>
+                        <div class="p-2.5 rounded bg-black/40 border border-white/5">✓ Live Chat History &amp; Session Engine</div>
+                        <div class="p-2.5 rounded bg-black/40 border border-white/5">✓ Scalable REST API Middleware</div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-2 py-1 text-[11px] font-mono bg-white/[0.04] rounded text-gray-300">Python</span>
+                        <span class="px-2 py-1 text-[11px] font-mono bg-white/[0.04] rounded text-gray-300">Flask</span>
+                        <span class="px-2 py-1 text-[11px] font-mono bg-white/[0.04] rounded text-gray-300">MongoDB</span>
+                        <span class="px-2 py-1 text-[11px] font-mono bg-white/[0.04] rounded text-gray-300">Node.js</span>
+                        <span class="px-2 py-1 text-[11px] font-mono bg-white/[0.04] rounded text-gray-300">WhatsApp Web.js</span>
+                        <span class="px-2 py-1 text-[11px] font-mono bg-white/[0.04] rounded text-gray-300">JWT</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-black/60 rounded-xl p-5 border border-white/[0.08] font-mono text-xs text-gray-300 space-y-3">
+                    <div class="border-b border-white/[0.08] pb-2 text-brand-500 font-bold">⚙️ Future Roadmap Architecture</div>
+                    <div class="space-y-1.5 text-[11px] text-gray-400">
+                        <div>[ ] AI Chatbot Auto-Response Layer</div>
+                        <div>[ ] Automated Appointment Scheduling Integration</div>
+                        <div>[ ] Real-time Conversation Analytics</div>
+                        <div>[ ] Multi-tenant SaaS Billing &amp; Payment API</div>
+                        <div>[ ] RAG Knowledge Base Document Retrieval</div>
+                    </div>
+                    <div class="pt-3 border-t border-white/[0.08] text-[10px] text-emerald-400">
+                        Business Value: Reduced message dispatch delay by 92% and enabled centralized client logging.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Case Studies Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- UniBot -->
+                <div class="bg-surface rounded-xl border border-white/[0.08] p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-mono bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded border border-blue-500/20">University AI</span>
+                        <h4 class="text-xl font-bold my-2">UniBot — Campus Assistant</h4>
+                        <p class="text-xs text-gray-400 mb-4">Production-ready university AI chatbot built on Groq inference engines. Solved student information routing under high concurrent load with prompt guardrails.</p>
+                    </div>
+                    <div class="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-gray-400 space-y-1">
+                        <div>Tech: Groq, Flask, Prompt Engineering</div>
+                        <div class="text-emerald-400">Metric: Sub-2s latency under load</div>
+                    </div>
+                </div>
+
+                <!-- Leukemia Detection -->
+                <div class="bg-surface rounded-xl border border-white/[0.08] p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-mono bg-red-500/10 text-red-400 px-2 py-0.5 rounded border border-red-500/20">Medical AI</span>
+                        <h4 class="text-xl font-bold my-2">Leukemia Detection System</h4>
+                        <p class="text-xs text-gray-400 mb-4">Medical diagnostic aid using computer vision to evaluate blood smear imagery for rapid triage classification.</p>
+                    </div>
+                    <div class="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-gray-400 space-y-1">
+                        <div>Tech: DenseNet121, Flask, REST API</div>
+                        <div class="text-emerald-400">Metric: 80% accuracy baseline on initial dataset</div>
+                    </div>
+                </div>
+
+                <!-- FaceGuardAI -->
+                <div class="bg-surface rounded-xl border border-white/[0.08] p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-mono bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded border border-purple-500/20">Security AI</span>
+                        <h4 class="text-xl font-bold my-2">FaceGuardAI</h4>
+                        <p class="text-xs text-gray-400 mb-4">Automated facial recognition attendance system eliminating physical sign-ins for institutional client logging.</p>
+                    </div>
+                    <div class="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-gray-400 space-y-1">
+                        <div>Tech: React, Node, MongoDB, JWT, OpenCV</div>
+                        <div class="text-emerald-400">Metric: Automated real-time log generation</div>
+                    </div>
+                </div>
+
+                <!-- PhysicsVerse -->
+                <div class="bg-surface rounded-xl border border-white/[0.08] p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-mono bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded border border-yellow-500/20">EdTech</span>
+                        <h4 class="text-xl font-bold my-2">PhysicsVerse Platform</h4>
+                        <p class="text-xs text-gray-400 mb-4">Full stack learning platform with granular RBAC authorization systems and stateful token validation.</p>
+                    </div>
+                    <div class="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-gray-400 space-y-1">
+                        <div>Tech: JWT, RBAC, REST APIs, OWASP</div>
+                        <div class="text-emerald-400">Metric: OWASP top-10 security hardened</div>
+                    </div>
+                </div>
+
+                <!-- DSA Tutor -->
+                <div class="bg-surface rounded-xl border border-white/[0.08] p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-mono bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/20">Interactive SaaS</span>
+                        <h4 class="text-xl font-bold my-2">DSA Interactive Tutor</h4>
+                        <p class="text-xs text-gray-400 mb-4">Interactive learning platform with real-time algorithm visualizers and progress tracking state engines.</p>
+                    </div>
+                    <div class="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-gray-400 space-y-1">
+                        <div>Tech: React, TypeScript, Vite</div>
+                        <div class="text-emerald-400">Metric: High engagement visual state model</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VSL (Video Sales Letter) Section -->
+    <section id="vsl" class="py-20 px-6 max-w-5xl mx-auto text-center border-t border-white/[0.06]">
+        <span class="text-xs font-mono text-brand-500 uppercase tracking-widest">3-Minute Executive Overview</span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 mb-6 font-display">
+            See How Ellmetrix Builds AI Software That Helps Businesses Scale Faster
+        </h2>
+        
+        <div class="relative w-full aspect-video rounded-2xl bg-surface border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl group my-8">
+            <!-- Video Placeholder Graphic -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-700/20 via-black to-brand-accent/20"></div>
+            <div class="relative z-10 text-center p-6">
+                <div class="w-20 h-20 rounded-full bg-brand-600/90 text-white flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-brand-500/50 cursor-pointer">
+                    <span class="text-2xl ml-1">▶</span>
+                </div>
+                <p class="text-sm font-semibold text-white">Watch System Architecture Breakdown (3:14)</p>
+                <p class="text-xs text-gray-400 mt-1">Discover how we eliminate software bloat and deploy within weeks.</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold rounded-lg text-sm hover:opacity-95 transition-all">
+                Book a Free Strategy Call
+            </a>
+        </div>
+    </section>
+
+    <!-- Development Process Timeline -->
+    <section class="py-20 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold tracking-tight font-display">Predictable Engineering Process</h2>
+            <p class="text-gray-400 text-sm mt-2">How we move from initial requirements to production rollout.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 text-center font-mono text-xs">
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06]">
+                <div class="text-brand-500 font-bold mb-1">01. Discovery</div>
+                <div class="text-gray-400 text-[11px]">Scope Mapping</div>
+            </div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06]">
+                <div class="text-brand-500 font-bold mb-1">02. Planning</div>
+                <div class="text-gray-400 text-[11px]">Architecture</div>
+            </div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06]">
+                <div class="text-brand-500 font-bold mb-1">03. UI/UX</div>
+                <div class="text-gray-400 text-[11px]">Design System</div>
+            </div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06]">
+                <div class="text-brand-500 font-bold mb-1">04. Dev</div>
+                <div class="text-gray-400 text-[11px]">Clean Code</div>
+            </div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06]">
+                <div class="text-brand-500 font-bold mb-1">05. Testing</div>
+                <div class="text-gray-400 text-[11px]">Latency &amp; Load</div>
+            </div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06]">
+                <div class="text-brand-500 font-bold mb-1">06. Deploy</div>
+                <div class="text-gray-400 text-[11px]">Production Go</div>
+            </div>
+            <div class="p-4 bg-surface rounded-xl border border-white/[0.06]">
+                <div class="text-brand-500 font-bold mb-1">07. Support</div>
+                <div class="text-gray-400 text-[11px]">SLA Maintenance</div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-6 max-w-xl mx-auto text-center">
-        <h2 class="text-3xl font-bold tracking-tight mb-4">Let's talk system capabilities</h2>
-        <p class="text-[#9CA3AF] text-sm mb-10">We discuss data architecture, direct integrations, and engineering requirements.</p>
-        
-        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 text-left border border-white/[0.08] bg-[#12131C]/60 p-6 rounded-xl backdrop-blur-sm">
+    <!-- Pricing Matrix -->
+    <section id="pricing" class="py-20 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-mono text-brand-500 uppercase tracking-widest">Transparent Investment</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 font-display">Starting Pricing &amp; Benchmarks</h2>
+            <p class="text-gray-400 mt-2 text-sm">Clear pricing designed around project scope, security tiers, and integration requirements.</p>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border border-white/[0.08] rounded-xl overflow-hidden bg-surface">
+                <thead class="bg-black/50 text-xs font-mono text-gray-400 uppercase border-b border-white/[0.08]">
+                    <tr>
+                        <th class="p-4">Solution Type</th>
+                        <th class="p-4">Starting Price</th>
+                        <th class="p-4">Typical Timeline</th>
+                        <th class="p-4">Included Value</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/[0.06] text-gray-300">
+                    <tr class="hover:bg-white/[0.02]">
+                        <td class="p-4 font-semibold text-white">AI Chatbots &amp; Customer Support</td>
+                        <td class="p-4 font-mono text-emerald-400 font-bold">$2,000</td>
+                        <td class="p-4 font-mono text-xs">2–4 Weeks</td>
+                        <td class="p-4 text-xs text-gray-400">Prompt guardrails, live website widget, basic CRM logging.</td>
+                    </tr>
+                    <tr class="hover:bg-white/[0.02]">
+                        <td class="p-4 font-semibold text-white">WhatsApp Business Automation</td>
+                        <td class="p-4 font-mono text-emerald-400 font-bold">$1,500</td>
+                        <td class="p-4 font-mono text-xs">2–3 Weeks</td>
+                        <td class="p-4 text-xs text-gray-400">Session engine, broadcast tooling, client history dashboard.</td>
+                    </tr>
+                    <tr class="hover:bg-white/[0.02]">
+                        <td class="p-4 font-semibold text-white">Custom Business CRM / Software</td>
+                        <td class="p-4 font-mono text-emerald-400 font-bold">$3,000</td>
+                        <td class="p-4 font-mono text-xs">4–8 Weeks</td>
+                        <td class="p-4 text-xs text-gray-400">Role-based access (RBAC), auditing, custom database architecture.</td>
+                    </tr>
+                    <tr class="hover:bg-white/[0.02]">
+                        <td class="p-4 font-semibold text-white">AI Knowledge Base (RAG)</td>
+                        <td class="p-4 font-mono text-emerald-400 font-bold">$3,500</td>
+                        <td class="p-4 font-mono text-xs">4–6 Weeks</td>
+                        <td class="p-4 text-xs text-gray-400">Vector indexing pipeline, PDF/Doc parsing, semantic retrieval.</td>
+                    </tr>
+                    <tr class="hover:bg-white/[0.02]">
+                        <td class="p-4 font-semibold text-white">Healthcare AI Solutions</td>
+                        <td class="p-4 font-mono text-emerald-400 font-bold">$3,000</td>
+                        <td class="p-4 font-mono text-xs">4–8 Weeks</td>
+                        <td class="p-4 text-xs text-gray-400">Intake bot workflow, diagnostic triage support, secure data logs.</td>
+                    </tr>
+                    <tr class="hover:bg-white/[0.02]">
+                        <td class="p-4 font-semibold text-white">Enterprise Web Applications</td>
+                        <td class="p-4 font-mono text-emerald-400 font-bold">$2,500</td>
+                        <td class="p-4 font-mono text-xs">3–6 Weeks</td>
+                        <td class="p-4 text-xs text-gray-400">Full stack architecture, API endpoints, payment/auth hooks.</td>
+                    </tr>
+                    <tr class="hover:bg-white/[0.02]">
+                        <td class="p-4 font-semibold text-white">Computer Vision Solutions</td>
+                        <td class="p-4 font-mono text-emerald-400 font-bold">$3,000</td>
+                        <td class="p-4 font-mono text-xs">Custom Scope</td>
+                        <td class="p-4 text-xs text-gray-400">OpenCV stream processing, real-time logging, attendance dashboards.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <blockquote class="mt-6 p-4 bg-brand-500/10 border-l-4 border-brand-500 rounded-r-lg text-xs text-brand-100 font-mono">
+            <strong>Note:</strong> Every business has unique requirements. Final pricing is calculated strictly based on project scope, API integrations, and security complexity.
+        </blockquote>
+    </section>
+
+    <!-- Why Choose Ellmetrix -->
+    <section class="py-20 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold tracking-tight font-display">The Ellmetrix Advantage</h2>
+            <p class="text-gray-400 text-sm mt-2">Why enterprise clients and business owners choose us over traditional agencies.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08]">
+                <div class="text-brand-500 text-xl font-bold mb-2">🎯 Business-Focused</div>
+                <p class="text-xs text-gray-400">We write code that directly moves revenue, speeds up operations, or cuts payroll waste.</p>
+            </div>
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08]">
+                <div class="text-brand-500 text-xl font-bold mb-2">⚡ AI-First Stack</div>
+                <p class="text-xs text-gray-400">Engineered ground-up with modern vector models, LLMs, and high-performance Python engines.</p>
+            </div>
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08]">
+                <div class="text-brand-500 text-xl font-bold mb-2">🛡️ OWASP Secure</div>
+                <p class="text-xs text-gray-400">JWT auth, role-based controls (RBAC), and bulletproof data isolation policies standard.</p>
+            </div>
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08]">
+                <div class="text-brand-500 text-xl font-bold mb-2">🤝 Senior Direct Access</div>
+                <p class="text-xs text-gray-400">Communicate directly with the engineers building your software. Zero account manager noise.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 px-6 max-w-4xl mx-auto border-t border-white/[0.06]">
+        <div class="p-8 border border-white/[0.08] bg-surface rounded-2xl flex flex-col md:flex-row gap-8 items-center">
+            <div class="w-28 h-28 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-accent to-cyan-400 flex items-center justify-center font-mono text-3xl font-bold text-white shadow-xl shrink-0">
+                IE
+            </div>
+            <div>
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
+                    <h3 class="text-2xl font-bold text-white font-display">Isha Eman</h3>
+                    <span class="text-xs font-mono text-brand-accent bg-brand-accent/10 px-2.5 py-1 rounded border border-brand-accent/20">Lead AI &amp; Python Backend Architect</span>
+                </div>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    Combining extensive experience as a Computer Science Lecturer with hands-on production engineering skills. Isha brings a unique dual perspective—structuring bulletproof code architecture for B2B frameworks while designing high-performance pedagogical and AI engines.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Placeholder -->
+    <section class="py-20 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold tracking-tight font-display">Client Testimonials</h2>
+            <p class="text-gray-400 text-sm mt-2">Verified feedback from our ongoing engineering partners.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08] relative">
+                <span class="text-[10px] font-mono uppercase bg-white/10 text-gray-300 px-2 py-0.5 rounded absolute top-4 right-4">Verified Client Placeholder</span>
+                <p class="text-sm text-gray-300 italic mb-4">"Ellmetrix streamlined our entire client onboarding workflow. The WhatsApp API and custom CRM saved our staff dozens of manual hours every week."</p>
+                <div class="text-xs font-bold text-white font-mono">— Operations Director, Regional Healthcare Network</div>
+            </div>
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08] relative">
+                <span class="text-[10px] font-mono uppercase bg-white/10 text-gray-300 px-2 py-0.5 rounded absolute top-4 right-4">Verified Client Placeholder</span>
+                <p class="text-sm text-gray-300 italic mb-4">"The sub-2s latency on our custom internal AI knowledge base was a game changer for our technical support reps."</p>
+                <div class="text-xs font-bold text-white font-mono">— Founder, B2B SaaS Platform</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-6 max-w-4xl mx-auto border-t border-white/[0.06]">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold tracking-tight font-display">Frequently Asked Questions</h2>
+            <p class="text-gray-400 text-sm mt-2">Everything you need to know about working with Ellmetrix.</p>
+        </div>
+
+        <div class="space-y-6">
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08]">
+                <h3 class="text-lg font-bold text-white mb-2">How long does a typical software build take?</h3>
+                <p class="text-sm text-gray-400">Most targeted implementations (like WhatsApp automation or AI Chatbots) launch in 2 to 4 weeks. Full custom CRMs and enterprise RAG platforms typically take 4 to 8 weeks.</p>
+            </div>
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08]">
+                <h3 class="text-lg font-bold text-white mb-2">How do you manage ongoing system maintenance?</h3>
+                <p class="text-sm text-gray-400">We offer straightforward monthly retainers starting at $150–$300/month covering server uptime monitoring, API updates, security patches, and latency optimization.</p>
+            </div>
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08]">
+                <h3 class="text-lg font-bold text-white mb-2">Can you connect AI to our existing legacy databases?</h3>
+                <p class="text-sm text-gray-400">Yes. We specialize in Python backends (Flask/FastAPI) that act as secure REST API bridges between modern LLM endpoints and existing SQL/NoSQL databases.</p>
+            </div>
+            <div class="p-6 bg-surface rounded-xl border border-white/[0.08]">
+                <h3 class="text-lg font-bold text-white mb-2">Who owns the intellectual property (IP)?</h3>
+                <p class="text-sm text-gray-400">You own 100% of the custom codebase, architecture, and operational data upon project completion and final invoice settlement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Lead Generation Form -->
+    <section id="contact" class="py-24 px-6 max-w-2xl mx-auto text-center border-t border-white/[0.06]">
+        <span class="text-xs font-mono text-brand-500 uppercase tracking-widest">Start Your Upgrade</span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 mb-4 font-display">Book a Free Consultation</h2>
+        <p class="text-gray-400 text-sm mb-10">Let's discuss your project parameters, integrations, and ROI targets directly with a senior developer.</p>
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 text-left border border-white/[0.08] bg-surface p-8 rounded-2xl shadow-2xl">
             <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-            <div>
-                <label class="block text-xs font-mono uppercase tracking-wider text-[#9CA3AF] mb-2">Your Name</label>
-                <input type="text" name="name" required class="w-full bg-[#0A0A0F] border border-white/[0.1] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#3B82F6] transition-colors text-white" placeholder="Jane Doe">
+            <input type="hidden" name="subject" value="New Lead Submission — Ellmetrix.com">
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Your Name</label>
+                    <input type="text" name="name" required class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="Jane Doe">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Work Email</label>
+                    <input type="email" name="email" required class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="jane@company.com">
+                </div>
             </div>
-            <div>
-                <label class="block text-xs font-mono uppercase tracking-wider text-[#9CA3AF] mb-2">Work Email</label>
-                <input type="email" name="email" required class="w-full bg-[#0A0A0F] border border-white/[0.1] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#3B82F6] transition-colors text-white" placeholder="jane@company.com">
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Industry</label>
+                    <select name="industry" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-gray-300">
+                        <option value="healthcare">Healthcare / Clinic</option>
+                        <option value="construction">Construction / HVAC / Plumbing</option>
+                        <option value="realestate">Real Estate / Law</option>
+                        <option value="saas">SaaS / Tech</option>
+                        <option value="ecommerce">E-Commerce / Logistics</option>
+                        <option value="other">Other Business</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Estimated Budget</label>
+                    <select name="budget" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-gray-300">
+                        <option value="1500-3000">$1,500 – $3,000</option>
+                        <option value="3000-5000">$3,000 – $5,000</option>
+                        <option value="5000+">$5,000+</option>
+                    </select>
+                </div>
             </div>
+
             <div>
-                <label class="block text-xs font-mono uppercase tracking-wider text-[#9CA3AF] mb-2">Project Niche</label>
-                <select name="vertical" class="w-full bg-[#0A0A0F] border border-white/[0.1] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#3B82F6] transition-colors text-[#9CA3AF]">
-                    <option value="saas">B2B SaaS AI Integration</option>
-                    <option value="edtech">EdTech & Smart Learning</option>
-                    <option value="healthcare">Healthcare Prototyping</option>
+                <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Services Needed</label>
+                <select name="service" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-gray-300">
+                    <option value="whatsapp">WhatsApp Business Automation</option>
+                    <option value="chatbot">AI Customer Support Chatbot</option>
+                    <option value="crm">Custom CRM / Business Software</option>
+                    <option value="rag">AI Knowledge Base (RAG)</option>
+                    <option value="healthcare">Healthcare AI Solution</option>
+                    <option value="custom">Custom Development</option>
                 </select>
             </div>
+
             <div>
-                <label class="block text-xs font-mono uppercase tracking-wider text-[#9CA3AF] mb-2">System Requirements</label>
-                <textarea name="message" rows="4" required class="w-full bg-[#0A0A0F] border border-white/[0.1] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#3B82F6] transition-colors text-white" placeholder="Describe your parameters..."></textarea>
+                <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Project Brief &amp; Requirements</label>
+                <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="Describe the problem you are looking to solve..."></textarea>
             </div>
-            <button type="submit" class="w-full py-4 bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white font-semibold text-sm rounded-xl hover:opacity-95 transition-all shadow-md">
-                Initialize Project Brief
+
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold text-sm rounded-xl hover:opacity-95 transition-all shadow-lg shadow-brand-500/25">
+                Submit Project Brief &amp; Request Call
             </button>
         </form>
     </section>
 
-    <footer class="border-t border-white/[0.08] bg-[#0A0A0F] py-12 px-6 text-xs text-[#9CA3AF]">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>CodeNeuron © 2026. Data systems engineered securely.</div>
+    <!-- Blog & Resources Section Placeholder -->
+    <section class="py-16 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold font-display">Latest Insights &amp; Engineering Guides</h2>
+            <a href="#contact" class="text-xs font-mono text-brand-500 hover:underline">View All &rarr;</a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+            <div class="p-5 bg-surface rounded-xl border border-white/[0.06]">
+                <span class="text-[10px] font-mono text-brand-500">AI Architecture</span>
+                <h3 class="font-bold my-2 text-white">How RAG Knowledge Bases Prevent AI Hallucinations in B2B Applications</h3>
+                <p class="text-xs text-gray-400">Why prompt constraints and vector DB indexing are essential for grounded data responses.</p>
+            </div>
+            <div class="p-5 bg-surface rounded-xl border border-white/[0.06]">
+                <span class="text-[10px] font-mono text-brand-500">Automation</span>
+                <h3 class="font-bold my-2 text-white">Automating WhatsApp Leads Without Third-Party Platform Lock-In</h3>
+                <p class="text-xs text-gray-400">How Python and Node session engines provide complete data privacy for your customer messaging.</p>
+            </div>
+            <div class="p-5 bg-surface rounded-xl border border-white/[0.06]">
+                <span class="text-[10px] font-mono text-brand-500">Custom Software</span>
+                <h3 class="font-bold my-2 text-white">When to Move Away From Off-The-Shelf CRMs to Custom Built Solutions</h3>
+                <p class="text-xs text-gray-400">A cost-benefit breakdown for growing clinics, contractors, and logistics companies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.08] bg-black/80 py-12 px-6 text-xs text-gray-400 font-mono">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-brand-600 flex items-center justify-center text-white font-bold text-xs">E</div>
+                <span class="text-sm font-bold text-white font-display">Ellmetrix</span>
+                <span class="text-gray-400 ml-2">© 2026 ellmetrix.com — Enterprise AI &amp; Software Development.</span>
+            </div>
             <div class="flex gap-6">
-                <a href="#services" class="hover:text-white">Services</a>
-                <a href="#proof" class="hover:text-white">Case Studies</a>
-                <a href="#about" class="hover:text-white">About</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#proof" class="hover:text-white transition-colors">Case Studies</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
             </div>
         </div>
     </footer>
