@@ -60,6 +60,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Calendly Widget Script Integration -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #07080e; color: #f4f4f6; }
         h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
@@ -159,7 +162,7 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <a href="#contact" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold rounded-lg bg-surface border border-white/10 hover:bg-white/[0.06] transition-all text-white">
+                <a href="#schedule" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold rounded-lg bg-surface border border-white/10 hover:bg-white/[0.06] transition-all text-white">
                     Book Strategy Call
                 </a>
                 <a href="#contact" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-brand-600 to-brand-accent text-white shadow-lg shadow-brand-500/20 hover:opacity-95 transition-all">
@@ -187,8 +190,8 @@
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
-            <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold rounded-xl shadow-xl shadow-brand-500/25 hover:opacity-95 transition-all text-center text-base">
-                Book Free Consultation
+            <a href="#schedule" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold rounded-xl shadow-xl shadow-brand-500/25 hover:opacity-95 transition-all text-center text-base flex items-center justify-center gap-2">
+                <span>📅</span> Book Strategy Call Directly
             </a>
             <a href="#proof" class="w-full sm:w-auto px-8 py-4 bg-surface text-gray-200 font-semibold rounded-xl border border-white/10 hover:bg-white/[0.04] transition-all text-center text-base inline-flex items-center justify-center gap-2">
                 View Our Work <span>&rarr;</span>
@@ -276,7 +279,7 @@
                         <div>• Tech: Python, Flask/FastAPI, Groq, REST APIs</div>
                     </div>
                 </div>
-                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+                <a href="#schedule" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
             </div>
 
             <!-- Service 2 -->
@@ -298,7 +301,7 @@
                         <div>• Tech: Python, Node.js, WhatsApp Web.js, JWT</div>
                     </div>
                 </div>
-                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+                <a href="#schedule" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
             </div>
 
             <!-- Service 3 -->
@@ -317,7 +320,7 @@
                         <div>• Tech: React, Node.js, MongoDB/PostgreSQL, OWASP</div>
                     </div>
                 </div>
-                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+                <a href="#schedule" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
             </div>
 
             <!-- Service 4 -->
@@ -336,7 +339,7 @@
                         <div>• Tech: Python, Vector DB, RAG Pipelines, FastAPI</div>
                     </div>
                 </div>
-                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+                <a href="#schedule" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
             </div>
 
             <!-- Service 5 -->
@@ -355,7 +358,7 @@
                         <div>• Tech: Python, Flask, DenseNet121, Secure DB</div>
                     </div>
                 </div>
-                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+                <a href="#schedule" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
             </div>
 
             <!-- Service 6 -->
@@ -374,7 +377,7 @@
                         <div>• Tech: OpenCV, React, Node.js, MongoDB, JWT</div>
                     </div>
                 </div>
-                <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
+                <a href="#schedule" class="w-full py-2.5 rounded-lg border border-white/10 hover:bg-brand-600 hover:border-brand-600 text-center text-xs font-semibold transition-all">Request Proposal &rarr;</a>
             </div>
 
         </div>
@@ -530,7 +533,7 @@
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold rounded-lg text-sm hover:opacity-95 transition-all">
+            <a href="#schedule" class="px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold rounded-lg text-sm hover:opacity-95 transition-all">
                 Book a Free Strategy Call
             </a>
         </div>
@@ -738,77 +741,105 @@
         </div>
     </section>
 
-    <!-- Contact & Lead Generation Form -->
-    <section id="contact" class="py-24 px-6 max-w-2xl mx-auto text-center border-t border-white/[0.06]">
-        <span class="text-xs font-mono text-brand-500 uppercase tracking-widest">Start Your Upgrade</span>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 mb-4 font-display">Book a Free Consultation</h2>
-        <p class="text-gray-400 text-sm mb-10">Let's discuss your project parameters, integrations, and ROI targets directly with a senior developer.</p>
+    <!-- Interactive Scheduling & Lead Capture Section -->
+    <section id="schedule" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-mono text-brand-500 uppercase tracking-widest">Instant Booking &amp; Inquiries</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 mb-4 font-display">Schedule a Strategy Call or Send a Brief</h2>
+            <p class="text-gray-400 text-sm">Select a convenient calendar slot below to schedule a 1-on-1 session directly with our senior engineers, or submit a brief using the project form.</p>
+        </div>
 
-        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 text-left border border-white/[0.08] bg-surface p-8 rounded-2xl shadow-2xl">
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-            <input type="hidden" name="subject" value="New Lead Submission — Ellmetrix.com">
-
-            <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Your Name</label>
-                    <input type="text" name="name" required class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="Jane Doe">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+            <!-- Left Column: Interactive Calendly Inline Scheduler -->
+            <div class="lg:col-span-7 bg-surface rounded-2xl border border-white/[0.08] p-4 shadow-2xl overflow-hidden">
+                <div class="flex items-center justify-between border-b border-white/[0.08] pb-3 px-2 mb-2">
+                    <span class="text-xs font-mono font-semibold text-white flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live Calendar Booking
+                    </span>
+                    <span class="text-[11px] font-mono text-gray-400">30-Min Technical Strategy</span>
                 </div>
-                <div>
-                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Work Email</label>
-                    <input type="email" name="email" required class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="jane@company.com">
-                </div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Industry</label>
-                    <select name="industry" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-gray-300">
-                        <option value="healthcare">Healthcare / Clinic</option>
-                        <option value="construction">Construction / HVAC / Plumbing</option>
-                        <option value="realestate">Real Estate / Law</option>
-                        <option value="saas">SaaS / Tech</option>
-                        <option value="ecommerce">E-Commerce / Logistics</option>
-                        <option value="other">Other Business</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Estimated Budget</label>
-                    <select name="budget" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-gray-300">
-                        <option value="1500-3000">$1,500 – $3,000</option>
-                        <option value="3000-5000">$3,000 – $5,000</option>
-                        <option value="5000+">$5,000+</option>
-                    </select>
+                
+                <!-- CALENDLY EMBED WIDGET -->
+                <!-- Replace 'YOUR_CALENDLY_USERNAME/30min' with your actual Calendly handle -->
+                <div class="calendly-inline-widget min-w-[320px] h-[650px] w-full rounded-xl" 
+                     data-url="https://calendly.com/YOUR_CALENDLY_USERNAME/30min?hide_gdpr_banner=1&background_color=11131f&text_color=ffffff&primary_color=3b82f6" 
+                     style="min-width:320px;height:650px;">
                 </div>
             </div>
 
-            <div>
-                <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Services Needed</label>
-                <select name="service" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-gray-300">
-                    <option value="whatsapp">WhatsApp Business Automation</option>
-                    <option value="chatbot">AI Customer Support Chatbot</option>
-                    <option value="crm">Custom CRM / Business Software</option>
-                    <option value="rag">AI Knowledge Base (RAG)</option>
-                    <option value="healthcare">Healthcare AI Solution</option>
-                    <option value="custom">Custom Development</option>
-                </select>
-            </div>
+            <!-- Right Column: Quick Lead Submission Form (Fallback) -->
+            <div id="contact" class="lg:col-span-5 bg-surface p-6 sm:p-8 rounded-2xl border border-white/[0.08] shadow-2xl space-y-4">
+                <div>
+                    <h3 class="text-xl font-bold text-white font-display mb-1">Prefer to Send a Brief?</h3>
+                    <p class="text-xs text-gray-400">Fill out this quick form and we will review your parameters within 24 hours.</p>
+                </div>
 
-            <div>
-                <label class="block text-xs font-mono uppercase text-gray-400 mb-2">Project Brief &amp; Requirements</label>
-                <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="Describe the problem you are looking to solve..."></textarea>
-            </div>
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 text-left">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="subject" value="New Lead Submission — Ellmetrix.com">
 
-            <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold text-sm rounded-xl hover:opacity-95 transition-all shadow-lg shadow-brand-500/25">
-                Submit Project Brief &amp; Request Call
-            </button>
-        </form>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 mb-1.5">Your Name</label>
+                        <input type="text" name="name" required class="w-full bg-black/50 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="Jane Doe">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 mb-1.5">Work Email</label>
+                        <input type="email" name="email" required class="w-full bg-black/50 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="jane@company.com">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-gray-400 mb-1.5">Industry</label>
+                            <select name="industry" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-brand-500 text-gray-300">
+                                <option value="healthcare">Healthcare / Clinic</option>
+                                <option value="construction">Construction / HVAC</option>
+                                <option value="realestate">Real Estate / Law</option>
+                                <option value="saas">SaaS / Tech</option>
+                                <option value="ecommerce">E-Commerce</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-gray-400 mb-1.5">Budget</label>
+                            <select name="budget" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-brand-500 text-gray-300">
+                                <option value="1500-3000">$1.5k – $3k</option>
+                                <option value="3000-5000">$3k – $5k</option>
+                                <option value="5000+">$5k+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 mb-1.5">Service Requested</label>
+                        <select name="service" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-brand-500 text-gray-300">
+                            <option value="whatsapp">WhatsApp Business Automation</option>
+                            <option value="chatbot">AI Customer Support Chatbot</option>
+                            <option value="crm">Custom CRM / Business Software</option>
+                            <option value="rag">AI Knowledge Base (RAG)</option>
+                            <option value="healthcare">Healthcare AI Solution</option>
+                            <option value="custom">Custom System Build</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 mb-1.5">Requirements / Brief</label>
+                        <textarea name="message" rows="3" required class="w-full bg-black/50 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-500 text-white" placeholder="Outline your project scope..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-brand-600 to-brand-accent text-white font-semibold text-xs rounded-xl hover:opacity-95 transition-all shadow-lg shadow-brand-500/25">
+                        Submit Project Proposal Brief
+                    </button>
+                </form>
+            </div>
+        </div>
     </section>
 
     <!-- Blog & Resources Section Placeholder -->
     <section class="py-16 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-2xl font-bold font-display">Latest Insights &amp; Engineering Guides</h2>
-            <a href="#contact" class="text-xs font-mono text-brand-500 hover:underline">View All &rarr;</a>
+            <a href="#schedule" class="text-xs font-mono text-brand-500 hover:underline">View All &rarr;</a>
         </div>
         <div class="grid md:grid-cols-3 gap-6 text-sm">
             <div class="p-5 bg-surface rounded-xl border border-white/[0.06]">
@@ -841,7 +872,7 @@
                 <a href="#services" class="hover:text-white transition-colors">Services</a>
                 <a href="#proof" class="hover:text-white transition-colors">Case Studies</a>
                 <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
-                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                <a href="#schedule" class="hover:text-white transition-colors">Schedule Call</a>
             </div>
         </div>
     </footer>
