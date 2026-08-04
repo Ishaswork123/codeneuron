@@ -25,54 +25,16 @@
     <meta name="twitter:description" content="AI-first backend engineering, custom CRMs, and WhatsApp business automation built for high-growth businesses.">
     <meta name="twitter:image" content="https://ellmetrix.com/twitter-image.jpg">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            accent: '#8b5cf6'
-                        },
-                        darkbg: '#07080e',
-                        surface: '#11131f',
-                        surfaceBorder: 'rgba(255,255,255,0.08)'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                        display: ['Space Grotesk', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Calendly Widget Script Integration -->
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Calendly Official Stylesheet (Required for layout) -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #07080e; color: #f4f4f6; }
-        h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-    </style>
+    <!-- Custom Tailwind Compiled Stylesheet -->
+    <link rel="stylesheet" href="/src/style.css">
 
     <!-- Structured Data / JSON-LD Schemas -->
     <script type="application/ld+json">
@@ -131,19 +93,19 @@
     }
     </script>
 </head>
-<body class="antialiased selection:bg-brand-500/30 selection:text-white bg-grid relative">
+<body class="antialiased selection:bg-brand-500/30 selection:text-white bg-darkbg text-gray-100 bg-grid relative font-sans">
 
     <!-- Promotional / Announcement Bar -->
     <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-accent text-white py-2 px-4 text-center text-xs sm:text-sm font-medium sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
             <span class="bg-white/20 px-2 py-0.5 rounded text-[11px] font-mono uppercase tracking-wider font-bold">🚀 August Special</span>
-            <span>Get <strong>20% OFF</strong> all custom software projects + <strong>FREE</strong> architecture consultation &amp; deployment of your first feature.</span>
+            <span>Get <strong>20% OFF</strong> all custom software projects + <strong>FREE</strong> architecture consultation.</span>
             <a href="#contact" class="underline hover:text-brand-100 font-semibold ml-1">Claim Offer &rarr;</a>
         </div>
     </div>
 
     <!-- Navigation Header -->
-    <header class="sticky top-[33px] z-40 border-b border-white/[0.08] bg-[#07080e]/85 backdrop-blur-md px-6 py-4">
+    <header class="sticky top-[33px] z-40 border-b border-surfaceBorder bg-darkbg/85 backdrop-blur-md px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center gap-2.5 group">
                 <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-accent flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
@@ -165,7 +127,7 @@
                 <a href="#schedule" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold rounded-lg bg-surface border border-white/10 hover:bg-white/[0.06] transition-all text-white">
                     Book Strategy Call
                 </a>
-                <a href="#contact" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-brand-600 to-brand-accent text-white shadow-lg shadow-brand-500/20 hover:opacity-95 transition-all">
+                <a href="info@ellmetrix.com" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-brand-600 to-brand-accent text-white shadow-lg shadow-brand-500/20 hover:opacity-95 transition-all">
                     Get Proposal
                 </a>
             </div>
@@ -205,8 +167,8 @@
         </div>
     </section>
 
-    <!-- Technology Stack / Trust Section -->
-    <section class="border-y border-white/[0.08] bg-surface/40 py-10 px-6">
+    <!-- Technology Stack Section -->
+    <section class="border-y border-surfaceBorder bg-surface/40 py-10 px-6">
         <div class="max-w-7xl mx-auto">
             <p class="text-center text-xs font-mono uppercase tracking-widest text-gray-400 mb-8">
                 Built With Enterprise-Grade Stack &amp; Infrastructure
@@ -251,7 +213,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Core Business Solutions -->
     <section id="services" class="py-20 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
             <div>
@@ -513,7 +475,7 @@
         </div>
     </section>
 
-    <!-- VSL (Video Sales Letter) Section -->
+    <!-- Executive Overview Section -->
     <section id="vsl" class="py-20 px-6 max-w-5xl mx-auto text-center border-t border-white/[0.06]">
         <span class="text-xs font-mono text-brand-500 uppercase tracking-widest">3-Minute Executive Overview</span>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 mb-6 font-display">
@@ -521,7 +483,6 @@
         </h2>
         
         <div class="relative w-full aspect-video rounded-2xl bg-surface border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl group my-8">
-            <!-- Video Placeholder Graphic -->
             <div class="absolute inset-0 bg-gradient-to-tr from-brand-700/20 via-black to-brand-accent/20"></div>
             <div class="relative z-10 text-center p-6">
                 <div class="w-20 h-20 rounded-full bg-brand-600/90 text-white flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-brand-500/50 cursor-pointer">
@@ -675,25 +636,7 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="py-20 px-6 max-w-4xl mx-auto border-t border-white/[0.06]">
-        <div class="p-8 border border-white/[0.08] bg-surface rounded-2xl flex flex-col md:flex-row gap-8 items-center">
-            <div class="w-28 h-28 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-accent to-cyan-400 flex items-center justify-center font-mono text-3xl font-bold text-white shadow-xl shrink-0">
-                IE
-            </div>
-            <div>
-                <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
-                    <h3 class="text-2xl font-bold text-white font-display">Isha Eman</h3>
-                    <span class="text-xs font-mono text-brand-accent bg-brand-accent/10 px-2.5 py-1 rounded border border-brand-accent/20">Lead AI &amp; Python Backend Architect</span>
-                </div>
-                <p class="text-sm text-gray-300 leading-relaxed">
-                    Combining extensive experience as a Computer Science Lecturer with hands-on production engineering skills. Isha brings a unique dual perspective—structuring bulletproof code architecture for B2B frameworks while designing high-performance pedagogical and AI engines.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Placeholder -->
+    <!-- Client Testimonials -->
     <section class="py-20 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
         <div class="text-center max-w-2xl mx-auto mb-12">
             <h2 class="text-3xl font-bold tracking-tight font-display">Client Testimonials</h2>
@@ -750,7 +693,7 @@
         </div>
 
         <div class="grid lg:grid-cols-12 gap-8 items-start">
-            <!-- Left Column: Interactive Calendly Inline Scheduler -->
+            <!-- Left Column: Fixed Calendly Inline Target Element -->
             <div class="lg:col-span-7 bg-surface rounded-2xl border border-white/[0.08] p-4 shadow-2xl overflow-hidden">
                 <div class="flex items-center justify-between border-b border-white/[0.08] pb-3 px-2 mb-2">
                     <span class="text-xs font-mono font-semibold text-white flex items-center gap-2">
@@ -759,15 +702,11 @@
                     <span class="text-[11px] font-mono text-gray-400">30-Min Technical Strategy</span>
                 </div>
                 
-                <!-- CALENDLY EMBED WIDGET -->
-                <!-- Replace 'YOUR_CALENDLY_USERNAME/30min' with your actual Calendly handle -->
-                <div class="calendly-inline-widget min-w-[320px] h-[650px] w-full rounded-xl" 
-                     data-url="https://calendly.com/isha77477/30min&background_color=11131f&text_color=ffffff&primary_color=3b82f6" 
-                     style="min-width:320px;height:650px;">
-                </div>
+                <!-- CALENDLY EMBED CONTAINER -->
+                <div id="calendly-embed" class="min-w-[320px] h-[650px] w-full rounded-xl"></div>
             </div>
 
-            <!-- Right Column: Quick Lead Submission Form (Fallback) -->
+            <!-- Right Column: Lead Form -->
             <div id="contact" class="lg:col-span-5 bg-surface p-6 sm:p-8 rounded-2xl border border-white/[0.08] shadow-2xl space-y-4">
                 <div>
                     <h3 class="text-xl font-bold text-white font-display mb-1">Prefer to Send a Brief?</h3>
@@ -835,31 +774,6 @@
         </div>
     </section>
 
-    <!-- Blog & Resources Section Placeholder -->
-    <section class="py-16 px-6 max-w-7xl mx-auto border-t border-white/[0.06]">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl font-bold font-display">Latest Insights &amp; Engineering Guides</h2>
-            <a href="#schedule" class="text-xs font-mono text-brand-500 hover:underline">View All &rarr;</a>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6 text-sm">
-            <div class="p-5 bg-surface rounded-xl border border-white/[0.06]">
-                <span class="text-[10px] font-mono text-brand-500">AI Architecture</span>
-                <h3 class="font-bold my-2 text-white">How RAG Knowledge Bases Prevent AI Hallucinations in B2B Applications</h3>
-                <p class="text-xs text-gray-400">Why prompt constraints and vector DB indexing are essential for grounded data responses.</p>
-            </div>
-            <div class="p-5 bg-surface rounded-xl border border-white/[0.06]">
-                <span class="text-[10px] font-mono text-brand-500">Automation</span>
-                <h3 class="font-bold my-2 text-white">Automating WhatsApp Leads Without Third-Party Platform Lock-In</h3>
-                <p class="text-xs text-gray-400">How Python and Node session engines provide complete data privacy for your customer messaging.</p>
-            </div>
-            <div class="p-5 bg-surface rounded-xl border border-white/[0.06]">
-                <span class="text-[10px] font-mono text-brand-500">Custom Software</span>
-                <h3 class="font-bold my-2 text-white">When to Move Away From Off-The-Shelf CRMs to Custom Built Solutions</h3>
-                <p class="text-xs text-gray-400">A cost-benefit breakdown for growing clinics, contractors, and logistics companies.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="border-t border-white/[0.08] bg-black/80 py-12 px-6 text-xs text-gray-400 font-mono">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
@@ -877,5 +791,7 @@
         </div>
     </footer>
 
+    <!-- Dedicated Application JavaScript -->
+    <script src="/src/app.js"></script>
 </body> 
 </html>
