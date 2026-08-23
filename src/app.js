@@ -196,12 +196,7 @@ function openBookingFlow() {
 }
 
 function initDemoModal() {
-  document.querySelectorAll('a[href="https://www.loom.com/share/placeholder"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      window.open('https://www.loom.com/share/placeholder', '_blank', 'noopener,noreferrer');
-    });
-  });
+  // Demo modal listener for video links if modal overlay is enabled
 }
 
 /**
