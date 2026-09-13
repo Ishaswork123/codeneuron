@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderProposalButton();
   initSmoothScroll();
   initDemoModal();
+  initMarquees();
+  initScrollReveal();
+  initStatCounters();
+  initPointerEffects();
+  initCursorAura();
 });
 
 /**
@@ -243,4 +248,172 @@ function initSmoothScroll() {
       }
     });
   });
+}
+
+/**
+ * Duplicates the contents of every [data-marquee] track so the CSS
+ * translateX(-50%) loop reads as a seamless, infinite scroll — same
+ * technique used for Auxa's hero ticker.
+ */
+function initMarquees() {
+  document.querySelectorAll("[data-marquee]").forEach((track) => {
+    const row = track.querySelector(".marquee-row");
+    if (!row || row.dataset.cloned) return;
+    row.innerHTML += row.innerHTML;
+    row.dataset.cloned = "true";
+  });
+}
+
+/**
+ * Fades + lifts elements into view as they cross the viewport.
+ * Applies to any element with the `.reveal` or `.reveal-stagger` class.
+ */
+function initScrollReveal() {
+  const targets = document.querySelectorAll(".reveal, .reveal-stagger");
+  if (!targets.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+
+  targets.forEach((el) => observer.observe(el));
+}
+
+/**
+ * Animated count-up for the hero stat row. Reads the target value from
+ * data-count and the display suffix/prefix from data-suffix/data-prefix,
+ * then eases the number in once the stat scrolls into view.
+ */
+function initStatCounters() {
+  const counters = document.querySelectorAll("[data-count]");
+  if (!counters.length) return;
+
+  const animate = (el) => {
+    const target = parseFloat(el.getAttribute("data-count"));
+    const prefix = el.getAttribute("data-prefix") || "";
+    const suffix = el.getAttribute("data-suffix") || "";
+    const decimals = el.getAttribute("data-decimals") ? parseInt(el.getAttribute("data-decimals"), 10) : 0;
+    const duration = 1400;
+    const start = performance.now();
+
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      el.textContent = prefix + value.toFixed(decimals) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    counters.forEach(animate);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((el) => observer.observe(el));
+}
+
+/**
+ * Adds the pointer-led hover treatment used across the interactive cards.
+ * Desktop-only so touch devices keep their native scrolling and tap behavior.
+ */
+function initPointerEffects() {
+  if (window.matchMedia("(pointer: coarse), (prefers-reduced-motion: reduce)").matches) return;
+
+  const interactiveTargets = document.querySelectorAll(".project-card, .glass-card, .btn-amethyst, [data-pointer-tilt]");
+  if (!interactiveTargets.length) return;
+
+  interactiveTargets.forEach((target) => {
+    target.addEventListener("pointermove", (event) => {
+      const bounds = target.getBoundingClientRect();
+      const x = event.clientX - bounds.left;
+      const y = event.clientY - bounds.top;
+      const rotateX = ((y / bounds.height) - 0.5) * -4;
+      const rotateY = ((x / bounds.width) - 0.5) * 4;
+
+      target.style.setProperty("--pointer-x", `${x}px`);
+      target.style.setProperty("--pointer-y", `${y}px`);
+      target.style.setProperty("--tilt-x", `${rotateX}deg`);
+      target.style.setProperty("--tilt-y", `${rotateY}deg`);
+      target.classList.add("is-pointer-active");
+    });
+
+    target.addEventListener("pointerleave", () => {
+      target.classList.remove("is-pointer-active");
+      target.style.removeProperty("--tilt-x");
+      target.style.removeProperty("--tilt-y");
+    });
+  });
+}
+
+function initCursorAura() {
+  if (window.matchMedia("(pointer: coarse), (prefers-reduced-motion: reduce)").matches) return;
+
+  const aura = document.createElement("div");
+  const core = document.createElement("div");
+  aura.className = "cursor-aura";
+  core.className = "cursor-core";
+  aura.setAttribute("aria-hidden", "true");
+  core.setAttribute("aria-hidden", "true");
+  document.body.append(aura, core);
+
+  let pointerX = window.innerWidth / 2;
+  let pointerY = window.innerHeight / 2;
+  let auraX = pointerX;
+  let auraY = pointerY;
+  let animationFrame;
+
+  const render = () => {
+    auraX += (pointerX - auraX) * 0.12;
+    auraY += (pointerY - auraY) * 0.12;
+    aura.style.transform = `translate3d(${auraX}px, ${auraY}px, 0)`;
+    core.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0)`;
+    animationFrame = requestAnimationFrame(render);
+  };
+
+  document.addEventListener("pointermove", (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    aura.classList.add("is-visible");
+    core.classList.add("is-visible");
+    aura.style.opacity = "1";
+    core.style.opacity = "1";
+  }, { passive: true });
+
+  document.addEventListener("pointerleave", () => {
+    aura.classList.remove("is-visible");
+    core.classList.remove("is-visible");
+    aura.style.opacity = "0";
+    core.style.opacity = "0";
+  });
+
+  render();
+  window.addEventListener("pagehide", () => cancelAnimationFrame(animationFrame), { once: true });
 }
