@@ -1,0 +1,17 @@
+@import url("../hvac/hvac.css");
+
+/* Offer B keeps the original HVAC visual system while giving its workflow a local entry point. */
+.hvac-b-page .mechanism-grid { grid-template-columns: repeat(5, 1fr); }
+.hvac-b-page .mechanism-step { min-height: 220px; }
+.hvac-b-page .mechanism-step + .mechanism-step { padding-left: 1rem; }
+.hvac-b-page .mechanism-step p { max-width: none; }
+.hvac-b-page .lead-journey-note { max-width: 820px; margin: 2.5rem auto 0; text-align: center; color: rgba(221, 241, 245, 0.72); font: 600 1.05rem/1.6 "Space Grotesk", sans-serif; }
+.hvac-b-page .audit-list p::first-letter { color: #7ce5a8; }
+@media (max-width: 900px) {
+  .hvac-b-page .mechanism-grid { grid-template-columns: 1fr 1fr; }
+  .hvac-b-page .mechanism-step { min-height: 180px; }
+}
+@media (max-width: 640px) {
+  .hvac-b-page .mechanism-grid { grid-template-columns: 1fr; }
+  .hvac-b-page .mechanism-step { min-height: auto; }
+}

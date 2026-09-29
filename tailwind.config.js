@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // Ensure Tailwind scans index.html in the root directory
-  content: ["./index.html", "./src/**/*.{html,js}"],
+  content: ["./index.html", "./portfolio/**/*.html", "./src/**/*.{html,js}"],
   darkMode: 'class',
   theme: {
     extend: {
